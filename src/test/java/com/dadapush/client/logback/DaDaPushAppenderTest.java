@@ -6,10 +6,10 @@ import org.slf4j.LoggerFactory;
 
 public class DaDaPushAppenderTest {
 
-  private static Logger loggger= LoggerFactory.getLogger(DaDaPushAppenderTest.class);
+  private static Logger logger = LoggerFactory.getLogger(DaDaPushAppenderTest.class);
 
   @Test
   public void testLog() {
-    loggger.error("test error",new RuntimeException("mock exception"));
+    logger.error("test error",new RuntimeException("mock exception"));
   }
 }
