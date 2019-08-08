@@ -29,6 +29,7 @@ public class DaDaPushAppender extends UnsynchronizedAppenderBase<ILoggingEvent> 
     }
   };
 
+  private DaDaPushMessageApi apiInstance;
   private String basePath = "https://www.dadapush.com";
   private String channelToken;
   private Boolean failOnError = false;
@@ -86,9 +87,6 @@ public class DaDaPushAppender extends UnsynchronizedAppenderBase<ILoggingEvent> 
       String title = titleLayout.doLayout(iLoggingEvent);
       String content = contentLayout.doLayout(iLoggingEvent);
 
-      ApiClient apiClient = Configuration.getDefaultApiClient();
-      apiClient.setBasePath(basePath);
-      DaDaPushMessageApi apiInstance = new DaDaPushMessageApi(apiClient);
       MessagePushRequest body = new MessagePushRequest();
       body.setTitle(StringUtils.substring(title, 0, 50));
       body.setContent(StringUtils.substring(content, 0, 500));
@@ -111,6 +109,14 @@ public class DaDaPushAppender extends UnsynchronizedAppenderBase<ILoggingEvent> 
     } catch (Exception e) {
       addError("send notification fail, iLoggingEvent=" + iLoggingEvent, e);
     }
+  }
+
+  @Override
+  public void start() {
+    super.start();
+    ApiClient apiClient = Configuration.getDefaultApiClient();
+    apiClient.setBasePath(basePath);
+    apiInstance = new DaDaPushMessageApi(apiClient);
   }
 
 }
