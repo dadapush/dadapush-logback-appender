@@ -6,7 +6,7 @@ add dependency
 ```xml
 <dependency>
   <groupId>com.dadapush.client</groupId>
-  <artifactId>dadapush-client</artifactId>
+  <artifactId>dadapush-logback-appender</artifactId>
   <version>1.0.1</version>
 </dependency>
 ```
