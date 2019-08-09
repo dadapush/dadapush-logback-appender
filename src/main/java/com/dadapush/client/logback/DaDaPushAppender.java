@@ -32,7 +32,6 @@ public class DaDaPushAppender extends UnsynchronizedAppenderBase<ILoggingEvent> 
   private DaDaPushMessageApi apiInstance;
   private String basePath = "https://www.dadapush.com";
   private String channelToken;
-  private Boolean failOnError = false;
   private Layout<ILoggingEvent> titleLayout = defaultTitleLayout;
   private Layout<ILoggingEvent> contentLayout = defaultContentLayout;
 
@@ -70,14 +69,6 @@ public class DaDaPushAppender extends UnsynchronizedAppenderBase<ILoggingEvent> 
     this.channelToken = channelToken;
   }
 
-  public Boolean getFailOnError() {
-    return failOnError;
-  }
-
-  public void setFailOnError(Boolean failOnError) {
-    this.failOnError = failOnError;
-  }
-
   protected void append(ILoggingEvent iLoggingEvent) {
     try {
       if (StringUtils.isEmpty(channelToken)) {
@@ -100,11 +91,7 @@ public class DaDaPushAppender extends UnsynchronizedAppenderBase<ILoggingEvent> 
               "send notification fail, detail: " + result.getCode() + " " + result.getErrmsg());
         }
       } catch (ApiException e) {
-        if (!failOnError) {
-          addError("send notification fail", e);
-        } else {
-          addError("send notification fail", e);
-        }
+        addError("send notification fail", e);
       }
     } catch (Exception e) {
       addError("send notification fail, iLoggingEvent=" + iLoggingEvent, e);

@@ -6,7 +6,7 @@
 
   <groupId>com.dadapush.client</groupId>
   <artifactId>dadapush-logback-appender</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <packaging>jar</packaging>
   <name>Logback DaDaPush Notification Appender</name>
   <description>Logback appender for sending messages to DaDaPush channel</description>

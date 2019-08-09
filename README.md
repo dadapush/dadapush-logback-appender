@@ -18,8 +18,6 @@ define appender
 
     <!-- basePath default value: https://www.dadapush.com -->
      <basePath>https://www.dadapush.com</basePath> 
-    <!-- failOnError default value: false-->
-    <failOnError>false</failOnError>
     <channelToken>YOUR_CHANNEL_TOKEN</channelToken>
 
     <titleLayout class="ch.qos.logback.classic.PatternLayout">
